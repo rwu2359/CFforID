@@ -1,0 +1,18 @@
+/*
+ * FMFtoID ( theFMFID, select )
+ * 25_09_21 JR
+ * v1.0
+ * 
+ * input: string FMFID
+ * return: (number) just the table ID (with select), or fieldID
+ * depends: <none>
+ * 
+ */
+
+
+Case ( 
+	select ; 
+	Mod ( GetAsNumber ( theFMFID ) ; 2 ^ 32 ) ;
+	//else
+	Int ( GetAsNumber ( theFMFID ) / 2 ^ 32 )
+) //end case

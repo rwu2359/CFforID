@@ -21,3 +21,6 @@ To convert back from FMFID to the Field Id, just do the reverse. Take off the ta
 
 ## Brucie bonus
 There is one extra step that is helpful here. If your query has a Prefer header with value fmodata.entity-ids then all the returned keys will be FMFID. If you use that data with these functions you can then do a set field by name, and your inbound data JSONGetELement() will also not break.
+
+#### version history
+    1. 25_10_10, initial release

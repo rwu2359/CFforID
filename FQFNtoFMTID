@@ -1,0 +1,27 @@
+/*
+ * FQFNtoFMTID ( theFieldname )
+ * 25_09_21 JR
+ * v1.0
+ * 
+ * input: string fieldname
+ * return: (string) the FMTID of the table that the field is sitting on
+ * depends: <none>
+ * 
+ */
+
+
+Let ( [
+	_a = Case ( 
+		PatternCount ( theFieldname  ; "::" ) = 0 ; 
+		GetFieldName ( theFieldname ) ;
+
+		//else
+		theFieldname
+		) ; //end case
+	_t = GetValue ( Substitute ( _a ; "::" ; ¶ ) ; 1 ) ;
+	_n = GetValue ( TableIDs ( "" ) ; listPositionCF ( TableNames ( "" ) ; _t ) )
+] ;
+
+	"FMTID:" &  _n
+
+) //end let

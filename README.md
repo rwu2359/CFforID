@@ -17,7 +17,7 @@ The table ID has been exposed for quite a while and within each table the field 
 In OData we can see in the $metadata endpoint an FMFID, a combination of the table ID and field ID.
 
 The field ID is left shifted and added to the table ID, This is a 32-bit shift, so times the field ID by 2 ^ 32 (4294967296) then add the ID.
-To convert back from FMFID to the Field Id, just do the reverse. Take off the table ID, divide by 2^32 and then look that value up in the field names, or even better go and read this excellent article by Andrew Duncan from databuzz about [querying the system tables(https://www.databuzz.com.au/accessing-base-tables-in-claris-filemaker-2023/)]
+To convert back from FMFID to the Field Id, just do the reverse. Take off the table ID, divide by 2^32 and then look that value up in the field names, or even better go and read this excellent article by Andrew Duncan from databuzz about [querying the system tables](https://www.databuzz.com.au/accessing-base-tables-in-claris-filemaker-2023/)
 
 ## Brucie bonus
 There is one extra step that is helpful here. If your query has a Prefer header with value fmodata.entity-ids, then all the returned keys will be in FMFID format. If you use that data with these functions, you can then do a set field by name, and your inbound data JSONGetElement() will also not break.

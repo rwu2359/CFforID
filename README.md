@@ -20,7 +20,7 @@ The field ID is left shifted and added to the table ID, This is a 32-bit shift, 
 To convert back from FMFID to the Field Id, just do the reverse. Take off the table ID, divide by 2^32 and then look that value up in the field names, or even better go and read the excellent article by Andrew Duncan from databuzz -- [querying the system tables(https://www.databuzz.com.au/accessing-base-tables-in-claris-filemaker-2023/)]
 
 ## Brucie bonus
-There is one extra step that is helpful here. If your query has a Prefer header with value fmodata.entity-ids then all the returned keys will be FMFID. If you use that data with these functions you can then do a set field by name, and your inbound data JSONGetELement() will also not break.
+There is one extra step that is helpful here. If your query has a Prefer header with value fmodata.entity-ids then all the returned keys will be FMFID. If you use that data with these functions you can then do a set field by name, and your inbound data JSONGetElement() will also not break.
 
 ## FileMaker file
 Simple with layout calculations to show the custom functions in operation

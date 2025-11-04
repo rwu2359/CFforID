@@ -2,7 +2,7 @@
 Custom functions to convert to FMTID and FMFID
 
 ## Required
-This requires OData 4.01 which arrived in the middle of the FMS 21 cycle, but I do recommend using the latest verison of FileMaker Server
+This only of any value in OData 4.01 which arrived in the middle of the FMS 21 cycle, but I do recommend using the latest version of FileMaker Server
 
 ## Description
 These custom functions are helpers to convert table and field names into FMTID and FMFID so that they can be used to abstract OData queries.

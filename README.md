@@ -1,5 +1,8 @@
-# CFforID
+## CFforID
 Custom functions to convert to FMTID and FMFID
+
+## Required
+This requires OData 4.01 which arrived in the middle of the fMS 21 cycly, but I do recommend using the latest verison of FileMaker Server
 
 These custom functions are helpers to convert table and field names into FMTID and FMFID so that they can be used to abstract OData queries.
 They are being launched at EngageU 2025 in Anterp at the start on November
@@ -14,5 +17,3 @@ To convert back from FMFID to the Field Id, just do the reverse. Take off the ta
 
 These function help with creating code which will survive renaming - which is a breaking issue for most of our current queries.
 There is one extra step that is helpful here. If your query has a Prefer header with value fmodata.entity-ids then all the returned keys will be FMFID. If you use that data with these functions you can then do a set field by name, and your inbound data JSONGetELement() will also not break.
-
-This does require OData 4.01 which arrived in the middle of the fMS 21 cycly, but I do recommend using the latest verison of FileMaker Server

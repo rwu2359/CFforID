@@ -1,0 +1,28 @@
+/*
+ * listPositionCF( theList; theItem )
+ * 18_07_23 JR
+ * v1.4
+ * 
+ * input: list, a complete line as item
+ * return: (number) position of theItem in theList
+ * depends: <none>
+ * 
+ */
+
+
+Let ( [
+	_it = theItem ;
+	_it = Case ( Left ( _it ; 1 ) = ¶ ; _it ; ¶ & _it ) ;
+	_it = Case ( Right ( _it ; 1 ) = ¶  ; _it ; _it & ¶ ) ;
+	_list = theList ;
+	_extra = Case ( Left ( _list ; 1 ) = ¶ ; 1 ; 0 ) ;
+	_list = Case ( Left ( _list ; 1 ) = ¶ ; _list ; ¶ & _list ) ;
+	_list = Case ( Right ( _list ; 1 ) = ¶  ; _list ; _list & ¶ ) ;
+	_offset = Position ( _list ; _it ; 1 ; 1 ) ;
+	_pos = Case ( IsEmpty ( theItem ) ; 0 ; _offset ; ValueCount ( Left ( _list ; _offset ) ) ; 0 )
+
+] ;
+
+	Case ( _pos = 0 ; 0 ; _pos + _extra )
+
+)

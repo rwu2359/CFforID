@@ -1,0 +1,32 @@
+/*
+ * FQFNtoFMFID ( theFieldname )
+ * 25_09_21 JR
+ * v1.0
+ * 
+ * input: string fieldname
+ * return: (string) the FMFID of the supplied field or field name
+ * depends: listPositionCF
+ * 
+ */
+
+
+Let ( [
+	_a = Case ( 
+		PatternCount ( theFieldname  ; "::" ) = 0 ; 
+		GetFieldName ( theFieldname ) ;
+
+		//else
+		theFieldname
+		) ; //end case
+	_t = GetValue ( Substitute ( _a ; "::" ; ¶ ) ; 1 ) ;
+	_f = GetValue ( Substitute ( _a ; "::" ; ¶ ) ; 2 ) ;
+	_n = GetValue ( TableIDs ( "" ) ; listPositionCF ( TableNames ( "" ) ; _t ) ) ;
+	_x = ExecuteSQL ( "SELECT FieldID FROM FileMaker_Fields WHERE TableName= ? " ; "" ; "" ; _t ) ; 
+	_y = ExecuteSQL ( "SELECT FieldName FROM FileMaker_Fields WHERE TableName= ? " ; "" ; "" ; _t ) ;
+	_c = GetValue ( TableIDs ( "" ) ; listPositionCF ( TableNames ( "" ) ; _t ) ) ;
+	_d = GetValue ( _x ; listPositionCF ( _y ; _f ) )
+] ;
+
+	"FMFID:" &  ( _d * 2 ^ 32 + _c )
+
+) //end let

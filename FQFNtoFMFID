@@ -1,11 +1,12 @@
 /*
  * FQFNtoFMFID ( theFieldname )
- * 25_09_21 JR
- * v1.0
+ * 25_10_05 JR
+ * v1.1
  * 
  * input: string fieldname
- * return: (string) the FMFID of the supplied field or field name
+ * return: (string) just the table name, or blank if just a field
  * depends: listPositionCF
+ * credit: @steve_ssh for suggesting simplifications
  * 
  */
 
@@ -20,13 +21,10 @@ Let ( [
 		) ; //end case
 	_t = GetValue ( Substitute ( _a ; "::" ; ¶ ) ; 1 ) ;
 	_f = GetValue ( Substitute ( _a ; "::" ; ¶ ) ; 2 ) ;
-	_n = GetValue ( TableIDs ( "" ) ; listPositionCF ( TableNames ( "" ) ; _t ) ) ;
-	_x = ExecuteSQL ( "SELECT FieldID FROM FileMaker_Fields WHERE TableName= ? " ; "" ; "" ; _t ) ; 
-	_y = ExecuteSQL ( "SELECT FieldName FROM FileMaker_Fields WHERE TableName= ? " ; "" ; "" ; _t ) ;
-	_c = GetValue ( TableIDs ( "" ) ; listPositionCF ( TableNames ( "" ) ; _t ) ) ;
-	_d = GetValue ( _x ; listPositionCF ( _y ; _f ) )
+	_z = ExecuteSQL ( "SELECT FieldID FROM FileMaker_Fields WHERE TableName= ? AND FieldName = ?  " ; "" ; "" ; _t ; _f ) ;
+	_c = GetValue ( TableIDs ( "" ) ; listPositionCF ( TableNames ( "" ) ; _t ) )
 ] ;
 
-	"FMFID:" &  ( _d * 2 ^ 32 + _c )
+	"FMFID:" &  ( _z * 2 ^ 32 + _c )
 
 ) //end let

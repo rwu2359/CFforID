@@ -25,6 +25,9 @@ There is one extra step that is helpful here. If your query has a Prefer header 
 ## FileMaker file
 Simple demo with layout calculations to show the custom functions in operation.
 
+### credit
+some helpful information from our favourite architect, Clay and helpful insights in making the final functions tighter from @steve_ssh
+
 #### version history
     1.1 25_10_10, initial release
     1.0 25_10_01, pre-release beta

@@ -26,4 +26,5 @@ There is one extra step that is helpful here. If your query has a Prefer header 
 Simple demo with layout calculations to show the custom functions in operation.
 
 #### version history
-    1. 25_10_10, initial release
+    1.1 25_10_10, initial release
+    1.0 25_10_01, pre-release beta
